@@ -41,29 +41,21 @@ http://www.hostbuf.com/downloads/finalshell_install.pkg
 
     curl https://get.acme.sh | sh
     
-### 申请证书及密钥
-【将代码中注释的邮箱和域名，改为你自己的】
-
-    ~/.acme.sh/acme.sh --register-account -m xxxx@gmail.com
-    
-    
------------- 
- 
-
-    ~/.acme.sh/acme.sh  --issue -d 输入你的域名  --standalone
-    
- ### 下载证书及密钥
- 
-    ~/.acme.sh/acme.sh --installcert -d 输入你的域名 --key-file /root/private.key --fullchain-file /root/cert.crt
-    
-### 安装&升级x-ui面板一键脚本
+### 安装&升级x-ui面板一键脚本（安装完成后，然后在x-ui里面申请ssl证书）
 
     bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
+    
+### 下载证书及密钥
+ 
+    ~/.acme.sh/acme.sh --installcert -d 输入你的域名 --key-file /root/private.key --fullchain-file /root/cert.crt
 
 ### ##BBR2加速(四合一版) Debian 11 不支持，最好用Debian 10 ##
 
     wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
-
+    
+### 有些服务器需要在安全设置里面放行x-ui面板端口
+    先安装防火墙 ：apt install firewalld
+    然后一定要关闭防火墙：systemctl stop firewalld
  
  
 ## 注意事项
